@@ -1,5 +1,5 @@
 /*
- *	SWE30001, 2020
+ *	SWE30001, 2020 
 
  *
  *	Multi-threaded Sieve of Eratosthenes
@@ -21,8 +21,6 @@ public class NumberGenerator extends Thread //Inherit from Thread since it alrea
 	public NumberGenerator(PrimeFilter primeFilter)
 	{
 		super("NumberGenerator");
-
-		// constructor
 		_primeFilter = primeFilter;
 	}
 
@@ -30,8 +28,6 @@ public class NumberGenerator extends Thread //Inherit from Thread since it alrea
 	public synchronized void start()
 	{
 		super.start();
-
-		// signal to Sieve that a thread has been started, use 0 as argument
 		sieveFrame.incrementThreads( 0 ); 
 	}
 
@@ -51,20 +47,11 @@ public class NumberGenerator extends Thread //Inherit from Thread since it alrea
 		{
 			synchronized(this)
 			{
-				// mark 1 as filtered (Sieve)
 				sieveFrame.incrementFiltered( 1 );
 
-				// create a filter for 2 and start it
 				_primeFilter.start();
-				// mark 2 as filtered and add 2 as prime (Sieve)
 				sieveFrame.incrementFiltered( 2 );
 				sieveFrame.incrementPrimes( 2 );
-				// while the thread is active, send every 100 ms
-				// the next integer to the fTwo filter
-				// stop at fLimit
-				// wait for 1 ms while the Sieve returns getFiltered() != fLimit
-				// stop the generator
-				// finally, decrement the Sieveâ€™s thread count by one
 
 				while (true)
 				{

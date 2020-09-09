@@ -65,10 +65,10 @@ public class ControlPanel extends JPanel
 		fNumbersTested.changeCount(fFiltered);
 	}
 
+	@SuppressWarnings("deprecation")
 	public void enableControls()
 	{
-		// enable Go button
-		
+		fGo.enable();
 	}
 
 	public void incrementThreads(int threadCount)
